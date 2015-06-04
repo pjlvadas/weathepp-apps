@@ -35,7 +35,6 @@ var emptyResults = function() {
 
 var renderWeather = function(weatherResult) {
 	emptyResults();
-debugger;
 	var weatherDiv = $('<div>').addClass('weather');
 	var cityName = $('<p>').text(weatherResult.name);
 	var cityTemp = $('<p>').text(Math.round(weatherResult.main.temp) + '* F');
@@ -88,7 +87,7 @@ var getMap = function(cityLat, cityLon) {
 
 var getPicCity = function(search) {
 	$.ajax({
-		url:'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=0cff1ea87d47aab1baf2f0214575bb73&tags='
+		url:'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=54d4e94f386164dc9dd315f04090b570&tags='
 		     + search 
 		     + '&is_getty=true&privacy_filter=1&safe_search=1&per_page=500&page=1&format=json&nojsoncallback=1',
 		dataType: 'json',
@@ -98,7 +97,7 @@ var getPicCity = function(search) {
 
 var getPicWeather = function(search) {
 	$.ajax({
-		url:'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=0cff1ea87d47aab1baf2f0214575bb73&tags='
+		url:'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=54d4e94f386164dc9dd315f04090b570&tags='
 		     + search 
 		     + '&group_id=1463451@N25&privacy_filter=1&safe_search=1&per_page=500&page=1&format=json&nojsoncallback=1',
 		dataType: 'json',
@@ -107,6 +106,7 @@ var getPicWeather = function(search) {
 };
 
 var renderPic = function(pic) {
+	debugger;
 	var random = Math.floor((Math.random() * (pic.photos.photo.length)) + 1)
 	var farmId = pic.photos.photo[random].farm;
 	var serverId = pic.photos.photo[random].server;
